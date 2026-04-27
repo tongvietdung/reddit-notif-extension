@@ -4,19 +4,19 @@ A Chrome/Brave extension that transforms Reddit's bell icon into a **quick-view 
 
 ---
 
-## ✨ Features
+## Features
 
 - Click the 🔔 bell → instant dropdown with your latest 10 notifications
 - Unread notifications highlighted with an orange dot
-- Shows: who, action type (reply/mention/DM), subreddit, time ago, and preview text
+- Shows: who, action type (reply/mention/DM), subreddit, time ago, and preview text (NOTE: Suggested notification won't be shown in the dropdown.)
 - "View all" button links to `/notifications/`
 - Results cached for 60s to avoid hammering the API
 - Works with Reddit's SPA navigation (no page refresh needed)
 - Close with Escape key or clicking outside
-NOTE: Suggested notification won't be shown in the dropdown.
+
 ---
 
-## 🚀 Install in Brave / Chrome
+## Install in Brave / Chrome
 
 1. Go to `brave://extensions` or `chrome://extensions`
 2. Enable **Developer mode** (top-right toggle)
@@ -37,19 +37,6 @@ GET https://www.reddit.com/message/inbox.json?limit=10&raw_json=1
 ```
 
 No OAuth setup, no API keys.
-
----
-
-## 📁 File Structure
-
-```
-reddit-notif-extension/
-├── manifest.json       — Extension config
-├── icons/              — Extension icons
-└── src/
-    ├── content.js      — Bell interception + API fetch + dropdown logic
-    └── dropdown.css    — Dropdown styles (injected into reddit.com)
-```
 
 ---
 
