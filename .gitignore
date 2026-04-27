@@ -1,0 +1,24 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# VS Code
+.vscode/
+
+# build
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# environment
+.env
+
+# Chrome extension keys
+*.pem

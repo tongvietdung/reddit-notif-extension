@@ -1,0 +1,215 @@
+/* ============================================================
+   Reddit Notification Dropdown — dropdown.css
+   Injected into reddit.com pages by the extension
+   ============================================================ */
+
+#rnd-dropdown {
+  position: absolute;
+  z-index: 9999999;
+  width: 340px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  background: #1a1a1b;
+  border: 1px solid #343536;
+  border-radius: 12px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.4),
+    0 12px 40px rgba(0, 0, 0, 0.5);
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  color: #d7dadc;
+
+  transition:
+    opacity 0.18s ease,
+    max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.18s ease;
+  transform: translateY(-6px);
+}
+
+#rnd-dropdown.rnd-open {
+  max-height: 520px;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+
+.rnd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid #343536;
+}
+
+.rnd-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #d7dadc;
+  letter-spacing: 0.1px;
+}
+
+.rnd-view-all {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ff4500;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 69, 0, 0.35);
+  transition: background 0.15s, color 0.15s;
+}
+
+.rnd-view-all:hover {
+  background: rgba(255, 69, 0, 0.12);
+  color: #ff6534;
+}
+
+/* ── Notification List ────────────────────────────────────── */
+
+.rnd-list {
+  overflow-y: auto;
+  max-height: 440px;
+  scroll-behavior: smooth;
+}
+
+.rnd-list::-webkit-scrollbar {
+  width: 4px;
+}
+.rnd-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.rnd-list::-webkit-scrollbar-thumb {
+  background: #343536;
+  border-radius: 4px;
+}
+
+/* ── Individual Item ──────────────────────────────────────── */
+
+.rnd-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid #272729;
+  position: relative;
+  transition: background 0.12s;
+}
+
+.rnd-item:last-child {
+  border-bottom: none;
+  border-radius: 0 0 12px 12px;
+}
+
+.rnd-item:hover {
+  background: #272729;
+}
+
+.rnd-item--unread {
+  background: rgba(255, 69, 0, 0.05);
+}
+
+.rnd-item--unread:hover {
+  background: rgba(255, 69, 0, 0.09);
+}
+
+.rnd-unread-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff4500;
+  margin-top: 5px;
+  box-shadow: 0 0 6px rgba(255, 69, 0, 0.5);
+}
+
+.rnd-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rnd-item-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-bottom: 2px;
+}
+
+.rnd-author {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff4500;
+}
+
+.rnd-action {
+  font-size: 12px;
+  color: #818384;
+}
+
+.rnd-sub-meta {
+  font-size: 11px;
+  color: #545454;
+  margin-bottom: 5px;
+}
+
+.rnd-preview {
+  font-size: 13px;
+  color: #9c9c9c;
+  line-height: 1.45;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Loading ──────────────────────────────────────────────── */
+
+.rnd-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 16px;
+  color: #545454;
+  font-size: 13px;
+}
+
+.rnd-spinner {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #343536;
+  border-top-color: #ff4500;
+  border-radius: 50%;
+  animation: rnd-spin 0.7s linear infinite;
+}
+
+@keyframes rnd-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Empty / Error ────────────────────────────────────────── */
+
+.rnd-empty,
+.rnd-error {
+  padding: 28px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: #545454;
+  line-height: 1.5;
+}
+
+.rnd-error {
+  color: #f95d3e;
+}
